@@ -1,0 +1,19 @@
+package test;
+public class ClassA {
+	 private static String password = "Sadiq";
+}
+--------------------------------------------------
+2nd Class.
+package test;
+import java.lang.reflect.Field;
+public class ClassB {
+	public static void main(String[] args)throws Exception {
+		Class instanceOfClass = Class.forName("test.ClassA");
+		Field instanceOfField = instanceOfClass.getDeclaredField("password");
+		instanceOfField.setAccessible(true);
+		Object obj = instanceOfField.get(instanceOfField);
+		System.out.println("Getting Private member data from other class= "+obj);  // Outpur Getting Private member data from other class= Sadiq
+	}
+}
+
+
